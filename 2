@@ -1,0 +1,30 @@
+#include <iostream>
+#include <algorithm> 
+
+using namespace std;
+
+int sumRange(int a, int b) 
+{
+    if (a > b) 
+    {
+        swap(a, b);
+    }
+    int sum = 0;
+    for (int i = a; i <= b; ++i) 
+    {
+        sum += i;
+    }
+    return sum;
+}
+
+int main() 
+{
+    int num1, num2;
+    cout << "Введите два целых числа: ";
+    cin >> num1 >> num2;
+
+    int result = sumRange(num1, num2);
+    cout << "Сумма чисел в диапазоне между " << num1 << " и " << num2 << ": " << result << endl;
+
+    return 0;
+}
