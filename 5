@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+bool isHappyTicket(int ticketNumber) 
+{
+    
+    if (ticketNumber < 100000 || ticketNumber > 999999) 
+    {
+        return false;
+    }
+
+    
+    string ticketStr = to_string(ticketNumber);
+
+    
+    int sumFirstHalf = (ticketStr[0] - '0') + (ticketStr[1] - '0') + (ticketStr[2] - '0');
+
+    
+    int sumSecondHalf = (ticketStr[3] - '0') + (ticketStr[4] - '0') + (ticketStr[5] - '0');
+
+    
+    return sumFirstHalf == sumSecondHalf;
+}
+
+
+int main() 
+{
+    int ticket;
+
+    cout << "Введите шестизначный номер билета: ";
+    cin >> ticket;
+
+    if (isHappyTicket(ticket)) 
+    {
+        cout << ticket << " - счастливый билет!" << endl;
+    } else 
+    {
+        cout << ticket << " - обычный билет." << endl;
+    }
+
+    return 0;
+}
