@@ -1,0 +1,59 @@
+#include <iostream>
+
+using namespace std;
+
+
+bool isPerfect(int n) 
+{
+    if (n <= 1) return false;
+
+    int sumDivisors = 1;
+    for (int i = 2; i * i <= n; ++i) 
+    {
+        if (n % i == 0) 
+        {
+            sumDivisors += i;
+            if (i * i != n) 
+            {
+                sumDivisors += n / i;
+            }
+        }
+    }
+    return sumDivisors == n;
+}
+
+int main() 
+{
+    int start, end;
+    cout << "Введите начало интервала: ";
+    cin >> start;
+    cout << "Введите конец интервала: ";
+    cin >> end;
+
+    if (start <= 0 || end <= 0) 
+    {
+        cout << "Введите положительные числа для начала и конца интервала" << endl;
+        return 1; // Ошибка
+    }
+
+    cout << "Совершенные числа в интервале [" << start << ", " << end << "]: ";
+    bool foundPerfect = false; // Флаг для проверки, найдены ли совершенные числа
+
+    for (int i = start; i <= end; ++i) 
+    {
+        if (isPerfect(i)) 
+        {
+            cout << i << " ";
+            foundPerfect = true;
+        }
+    }
+
+    if (!foundPerfect) 
+    {
+        cout << "Совершенные числа в заданном интервале отсутствуют." << endl;
+    } else {
+        cout << endl;
+    }
+
+    return 0;
+}
