@@ -1,45 +1,41 @@
-ДОДЕЛАТЬ
 #include <iostream>
-#include <string>
-
+#include <cstdlib> 
 using namespace std;
 
-bool isHappyTicket(int ticketNumber) 
+void Lucky(string a)
 {
-    
-    if (ticketNumber < 100000 || ticketNumber > 999999) 
+    int b = 0;
+    char c;
+    int b2 = 0;
+    for (int i = 0; i < 3; i++)
     {
-        return false;
+        c = a[i];
+
+        b += atoi(&c);
+    }
+    for (int i = 3; i < 6; i++)
+    {
+        c = a[i];
+        b2 += atoi(&c);
+    }
+    if (b == b2)
+    {
+        cout << "Число счастливое" << endl;
+        
+    }
+    else
+    {
+        cout << "Число не счастливое" << endl;
     }
 
-    
-    string ticketStr = to_string(ticketNumber);
-
-    
-    int sumFirstHalf = (ticketStr[0] - '0') + (ticketStr[1] - '0') + (ticketStr[2] - '0');
-
-    
-    int sumSecondHalf = (ticketStr[3] - '0') + (ticketStr[4] - '0') + (ticketStr[5] - '0');
-
-    
-    return sumFirstHalf == sumSecondHalf;
 }
 
-
-int main() 
+int main()
 {
-    int ticket;
+    setlocale(LC_ALL, "rus");
+    string b = "343344";
+    Lucky(b);
 
-    cout << "Введите шестизначный номер билета: ";
-    cin >> ticket;
 
-    if (isHappyTicket(ticket)) 
-    {
-        cout << ticket << " - счастливый билет!" << endl;
-    } else 
-    {
-        cout << ticket << " - обычный билет." << endl;
-    }
-
-    return 0;
+    
 }
